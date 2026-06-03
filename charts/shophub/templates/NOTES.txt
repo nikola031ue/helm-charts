@@ -1,0 +1,6 @@
+ShopHub is deployed successfully.
+
+Access the application at: http://{{ .Values.ingress.host }}
+
+Make sure your /etc/hosts contains:
+  127.0.0.1 {{ .Values.ingress.host }}

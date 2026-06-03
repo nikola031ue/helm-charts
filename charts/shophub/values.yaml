@@ -1,0 +1,28 @@
+replicaCount: 1
+
+image:
+  repository: nikola031ue/shophub
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  className: nginx
+  host: shophub.local
+
+serviceAccount:
+  create: true
+  name: ""
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
