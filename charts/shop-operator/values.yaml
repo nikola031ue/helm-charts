@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: shop-operator
+  pullPolicy: IfNotPresent
+  tag: latest
+
+serviceAccount:
+  create: true
+  name: controller-manager
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
