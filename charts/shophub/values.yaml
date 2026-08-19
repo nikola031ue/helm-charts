@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: nikola031ue/shophub
+  repository: shophub-api
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -26,3 +26,25 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 80
+
+env:
+  - name: ConnectionStrings__DefaultConnection
+    value: "Host=shophub-postgres-service;Port=5432;Database=shophubdb;Username=shophub;Password=shophub123"
+  - name: ASPNETCORE_ENVIRONMENT
+    value: "Development"
+  - name: Jwt__SecretKey
+    value: "dev-secret-key-change-in-production-min-32-chars"
+  - name: Jwt__Issuer
+    value: "ShopHubApi"
+  - name: Jwt__Audience
+    value: "ShopHubClient"
+  - name: Jwt__AccessTokenExpirationMinutes
+    value: "60"
+  - name: Jwt__RefreshTokenExpirationDays
+    value: "7"
+  
+postgresql:
+  enabled: true
+  dbName: shophubdb
+  dbUser: shophub
+  dbPassword: shophub123

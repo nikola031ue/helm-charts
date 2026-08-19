@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shophub-postgres-service
+  labels:
+    {{- include "shophub.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+      name: postgres
+  selector:
+    app.kubernetes.io/component: postgres
+    {{- include "shophub.selectorLabels" . | nindent 4 }}

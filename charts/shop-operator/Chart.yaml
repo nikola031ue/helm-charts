@@ -1,0 +1,6 @@
+apiVersion: v2
+name: shop-operator
+description: A Kubernetes operator for managing ShopHub shops, Discord channels, and Wallets.
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
